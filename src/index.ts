@@ -4,10 +4,11 @@ const app = express();
 app.use(cors());
 import bodyParser from 'body-parser';
 const jsonParser = bodyParser.json();
+import { Request, Response } from 'express';
 
 import * as db from './db-connection';
 
-app.get('/user/:id', async (req, res) => {
+app.get('/user/:id', async (req:Request, res:Response) => {
     console.log('Petición recibida al endpoint GET /user');
     try {
         let query = `SELECT * FROM usuarios WHERE id='${req.params.id}'`;
@@ -29,7 +30,7 @@ app.get('/user/:id', async (req, res) => {
     
 });
 
-app.post('/log', jsonParser, async (req, res) => {
+app.post('/log', jsonParser, async (req:Request, res:Response) => {
     console.log(`Petición recibida al endpoint POST /log. 
         Body:${JSON.stringify(req.body)}`);
 
@@ -50,10 +51,10 @@ app.post('/log', jsonParser, async (req, res) => {
     }
 });
 
-app.get('/ranking', async (req, res) => {
+app.get('/ranking', async (req:Request, res:Response) => {
     console.log('Petición recibida al endpoint GET /ranking');
     try {
-        let db_response = await db.query("SELECT id, name, puntuacion FROM usuarios ORDER BY puntuacion DESC;");
+        let db_response = await db.query("SELECT FROM usuarios;");
         if(db_response.puntuacion != '[null]'){
             console.log(db_response.rows[0]);
             res.json(db_response.rows[0]);
@@ -65,7 +66,7 @@ app.get('/ranking', async (req, res) => {
     }
 });
 
-app.post('/puntuation/:id_usuario', jsonParser, async (req, res) => {
+app.post('/puntuation/:id_usuario', jsonParser, async (req:Request, res:Response) => {
     console.log(`Petición recibida al endpoint POST /puntuation. 
         Body:${JSON.stringify(req.body)}`);
 

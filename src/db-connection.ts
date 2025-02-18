@@ -10,7 +10,7 @@ import{ Pool } from 'pg';
 
 
 
-const connectionString = 'postgresql://proyecto_final_24_25_k8bw_user:5SGIr48pH0sMGqASTsOLVNoCQZFYmXX9@dpg-cum73p52ng1s73fqab3g-a.frankfurt-postgres.render.com/proyecto_final_24_25_k8bw'
+const connectionString = 'postgresql://proyecto_final_24_25_k8bw_user:5SGIr48pH0sMGqASTsOLVNoCQZFYmXX9@dpg-cum73p52ng1s73fqab3g-a/proyecto_final_24_25_k8bw'
 
 const pool = new Pool ({
     connectionString
